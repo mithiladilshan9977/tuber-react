@@ -17,14 +17,137 @@
  
 body {
   margin: 0;
- 
+  
   min-width: 320px;
   min-height: 100vh;
 }
 
+/* App.css */
+
+.page-container {
+ 
+  height: 100vh; /* Set the height of the container to the full viewport height */
+}
+
+.centered-div {
+  background: red;
+  border: 1px solid black;
+ 
+  width: 50%;
+  height: 100%;
  
  
+  font-family: Arial;
+}
+.tuberheadingdiv{
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  background-color: black;
+}
+.nametuber{
+  color: orange;
+  font-size: 20px;
+  margin: 10px;
+}
+
  
+ .mainholder{
+  background-color: aqua;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  flex-direction: row;
+ 
+ }
+ .left-side{
+ 
+  width: 50%;
+  height: 100%;
+  background-color: rgb(101, 205, 3);
+  display: flex;
+ padding-left: 70px;
+ 
+  flex-direction: column;
+   align-items: flex-start;
+ }
+
+ .spantags{
+  color: black;
+  font-size: 30px;
+  font-weight: bold;
+ }
+ .requiremntsspan{
+  color: black;
+  font-size: 22px;
+  font-weight: 500;
+  margin-top: 15px;
+ }
+.formholder{
+  width: 100%;
+height: 100%;
+display: flex;
+ justify-content: center;
+flex-direction: column;
+  background-color: #f9f9f9;
+}
+.infoholder{
+  display: flex;
+  
+  align-items: flex-start;
+  flex-direction: column;
+}
+.inputfields{
+ 
+  border: 1xp solid rgba(0, 0, 0, 0.127);
+  border-radius: 10px;
+  margin: 10px;
+  padding: 15px;
+  background-color: #24242410;
+
+} 
+.createaccounttitle{
+  font-size: 30px;
+  margin: 10px;
+ 
+  display: inline;
+}
+.checkboxholder{
+ 
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+}
+.checkbox{
+  cursor: pointer;
+}
+.buttonholder{
+  width: 100%;
+ 
+  display: flex;
+  flex-direction: row;
+ 
+  justify-content: center;
+  align-items: center;
+}
+.nextbtn{
+  width: 100%;
+  color: red;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 10px;
+   margin: 12px;
+  display: block;
+  background-color: aliceblue;
+}
+
+
+
+
+
 
 @media (prefers-color-scheme: light) {
   :root {
