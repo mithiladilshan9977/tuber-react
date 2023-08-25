@@ -3,9 +3,10 @@ export function AddressForm(){
     return (
         < >
  
- <div className="titileHolderStep2">
-    <p className="innerText">Driver information</p>
- </div>
+ <div className="titileholder">
+        <span className="createaccounttitle">Driver information</span>
+        </div>
+
         <input  autoFocus required type="date" placeholder="Date of birth" className="inputfields"/>
 
  
@@ -20,9 +21,10 @@ export function AddressForm(){
             <option value="">Sri lanka</option>
             <option value="">Sri lanka</option>
          </select>
-         <div className="titileHolderStep2">
-         <p>Create password</p>
- </div>
+         
+         <div className="craeetpasswordholder">
+        <span className="createPasswordText">Create password</span>
+        </div>
 
          
          <input type="password" placeholder="Password" className="inputfields"/>

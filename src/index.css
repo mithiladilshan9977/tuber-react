@@ -30,8 +30,8 @@ body {
 }
 
 .centered-div {
-  background: red;
-  border: 1px solid black;
+ 
+ 
  
   width: 50%;
   height: 100%;
@@ -54,7 +54,7 @@ body {
 
  
  .mainholder{
-  background-color: aqua;
+ 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,17 +62,20 @@ body {
   flex-direction: row;
  
  }
- .left-side{
- 
+ .orange-text {
+  color: #EF4D24;
+}
+
+.left-side {
   width: 50%;
   height: 100%;
-  background-color: rgb(101, 205, 3);
+  background: linear-gradient(45deg,rgba(241, 222, 186, 0.078), rgba(255, 166, 0, 0.250));
   display: flex;
- padding-left: 70px;
- 
+  padding-left: 50px;
+  padding-top: 75px;
   flex-direction: column;
-   align-items: flex-start;
- }
+  align-items: flex-start;
+}
 
  .spantags{
   color: black;
@@ -81,48 +84,99 @@ body {
  }
  .requiremntsspan{
   color: black;
-  font-size: 22px;
-  font-weight: 500;
-  margin-top: 15px;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 32px;
  }
+ .normelText {
+  position: relative;
+  padding-left: 20px;  
+  display: block;
+  font-weight: 700;
+  margin-bottom: 10px;  
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;  
+    height: 10px;  
+    background-color: #EF4D24;
+    border-radius: 50%;  
+  }
+}
+
 .formholder{
   width: 100%;
 height: 100%;
+ 
 display: flex;
  justify-content: center;
 flex-direction: column;
-  background-color: #f9f9f9;
+ 
+}
+.formholder{
+  width: 80%;
+  margin: 0 auto;
+ 
 }
 .infoholder{
   display: flex;
-  
+  margin-top: 10px;
   align-items: flex-start;
   flex-direction: column;
 }
-.inputfields{
- 
-  border: 1xp solid rgba(0, 0, 0, 0.127);
+.inputfields {
+  border: none;  
   border-radius: 10px;
   margin: 10px;
   padding: 15px;
-  background-color: #24242410;
+  background-color: #7979790b;
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  border: 2px solid rgba(0, 0, 0, 0.11);  
+}
+ 
 
-} 
+ 
 .titileholder{
-  padding: 15px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-start;
+}
+.craeetpasswordholder{
+  margin-top: 10px;
   display: flex;
   justify-content: flex-start;
 }
 .createaccounttitle{
-  font-size: 30px;
+  font-size: 17px;
+   text-transform: uppercase;
+   padding-left: 5px;
+   font-weight: bold;
  
   
+}
+.createPasswordText{
+  font-size: 13px;
+ 
+  padding-left: 5px;
+  font-weight: bold;
 }
 .stepsindicaterholder{
   display: flex;
   justify-self: flex-start;
-  padding-left: 15px;
+  padding-left: 5px;
   padding-top: 30px;
+}
+.stepsindicaterholder > span{
+  font-weight: bold;
+  color: #EF4D24;
+  margin-bottom: 10px;
 }
 .stepsDivsIndicater{
   display: flex;
@@ -132,40 +186,40 @@ flex-direction: column;
 
 .colorStepsIndicater1{
   width: 20%;
-  background-color: rgba(255, 166, 0, 0.326);
-  height: 10px;
+  background-color:  #ef4d243f;
+  height: 7px;
   border-radius: 10px;
    margin-left: 5px;
    margin-left: 5px;
 }
 .colorStepsIndicater2{
   width: 20%;
-  background-color: rgba(255, 166, 0, 0.326);
-  height: 10px;
+  background-color:  #ef4d243f;
+  height: 7px;
   border-radius: 10px;
    margin-left: 5px;
    margin-left: 5px;
 }
 .colorStepsIndicater3{
   width: 20%;
-  background-color: rgba(255, 166, 0, 0.326);
-  height: 10px;
+  background-color:  #ef4d243f;
+  height: 7px;
   border-radius: 10px;
    margin-left: 5px;
    margin-left: 5px;
 }
 .colorStepsIndicater4{
   width: 20%;
-  background-color: rgba(255, 166, 0, 0.326);
-  height: 10px;
+  background-color: #ef4d243f;
+  height: 7px;
   border-radius: 10px;
    margin-left: 5px;
    margin-left: 5px;
 }
 .colorStepsIndicater5{
   width: 20%;
-  background-color: rgba(255, 166, 0, 0.326);
-  height: 10px;
+  background-color:  #ef4d243f;
+  height: 7px;
   border-radius: 10px;
    margin-left: 5px;
    margin-left: 5px;
@@ -173,14 +227,14 @@ flex-direction: column;
 
 .NextcolorStepsIndicater{
   width: 20%;
-  background-color: rgba(255, 166, 0, 0.966);
+  background-color: #ef4d243f;
   height: 10px;
   border-radius: 10px;
    margin-left: 5px;
    margin-left: 5px;
 }
 .active {
-  background-color: rgba(255, 166, 0, 0.966);
+  background-color: #EF4D24;
 }
 
 .checkboxholder{
@@ -192,6 +246,7 @@ flex-direction: column;
 }
 .checkbox{
   cursor: pointer;
+  color: red;
 }
 .buttonholder{
   width: 100%;
@@ -202,18 +257,81 @@ flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.nextbtn{
+.nextbtn {
   width: 100%;
-  color: red;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
   border-radius: 10px;
   cursor: pointer;
-  padding: 10px;
-   margin: 12px;
+  padding: 14px 10px;
+  margin: 12px;
   display: block;
-  background-color: aliceblue;
+  background-image: linear-gradient(45deg,  #EF4D24, #efa824);
+}
+.backbtn{
+  width: 50%;
+  color: black;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: rgba(128, 128, 128, 0.171);
+  border: none;
+  cursor: pointer;
+  padding: 14px 10px;
+  border-radius: 10px;
+}
+ 
+
+.answerHolder {
+  max-height: 0;
+  display: flex;
+  justify-content: flex-start;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+  padding: 0;
 }
 
+.open {
+ 
+  transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+  max-height: 100px; /* Adjust this value based on your content height */
+  padding-left: 5px; /* Add padding to create spacing between content */
+}
 
+.faq-item {
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.253);
+ 
+}
+.question{
+  display: block;
+  width: 100%;
+  text-align: left;
+ 
+}
+.alreadyHaveAccount{
+  font-weight: 700;
+  font-size: 13px;
+  position: relative;
+  bottom: 10px;
+  color: rgb(76, 76, 76);
+  
+}
+.signLink{
+  color: #EF4D24;
+  text-decoration: none;
+  cursor: pointer;
+  padding-left: 2px;
+}
+.signLink:hover{
+  color:#EF4D24;
+  
+}
 .titileHolderStep2{
  padding-left: 15px;
  display: flex;
@@ -221,6 +339,121 @@ flex-direction: column;
  justify-content: flex-start;
 }
 
+.section1 {
+  display: flex;
+  gap: 10px; /* Adjust the gap as needed */
+}
+
+.section1 input {
+  flex: 1; /* This makes the inputs share equal width */
+}
+.section2 {
+  display: flex;
+  gap: 10px; /* Adjust the gap as needed */
+}
+
+.section2 select {
+  flex: 1; /* This makes the selects share equal width */
+}
+
+
+.mainWrapper{
+  display: flex;
+ 
+  flex-direction: column;
+}
+.mainOutHolders {
+  display: flex;
+  margin-top: 15px;
+  justify-content: space-between;
+  align-items: center;
+ 
+  padding: 10px;
+  margin-bottom: 20px;  
+  border-bottom: 1px solid rgba(0, 0, 0, 0.181);
+}
+
+.innerText{
+  color: black;
+  font-weight: bold;
+  font-size: 14px;
+}
+.mainOutHolderssub {
+  display: flex;
+ 
+  padding: 10px;
+  margin-bottom: 20px;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.181);
+
+ 
+}
+ 
+.left-content {
+  font-size: 15px;
+}
+
+.fileInputContainersub {
+  margin-left: auto;
+  width: 18%;
+ 
+}
+
+
+
+.fileInputContainer {
+  width: 30%;
+  display: flex;
+  gap: 10px; /* Adjust the gap as needed */
+}
+
+
+ 
+
+
+.mainOutHolderssub {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+ 
+  padding: 10px;
+}
+
+.left-content {
+  font-size: 15px;
+}
+
+.fileInputContainersub {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+
+.uploadLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.uploadLabel span {
+ 
+ font-size: 12px;
+ width: 100%;
+ border-radius: 20px;
+ padding: 5px 15px;
+ border: 1px solid orange;
+ color: red;
+}
+
+.uploadFrontImage,
+.uploadBackImage {
+  display: none; /* Hide the default file input appearance */
+}
 
 
 @media (prefers-color-scheme: light) {

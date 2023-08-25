@@ -12,7 +12,7 @@ export function UserForm(){
         <input  autoFocus required type="text" placeholder="Last name"  className="inputfields"/>
 
   
-        <input    required type="number" placeholder="Email" className="inputfields"/>
+        <input    required type="email" placeholder="Email" className="inputfields"/>
 
         <input    required type="number" placeholder="Phone number" className="inputfields"/>
            <div className="checkboxholder">
