@@ -2,7 +2,10 @@
 export function UserForm(){
     return (
         < >
-         <span className="createaccounttitle">Create your tuber account</span>
+        <div className="titileholder">
+        <span className="createaccounttitle">Create your tuber account</span>
+        </div>
+         
         <input  autoFocus required type="text" placeholder="First name" className="inputfields"/>
 
  

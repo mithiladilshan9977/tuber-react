@@ -13,8 +13,19 @@ function App() {
   <UserForm/> , <AddressForm/> ,<AccountForm/>
 
 ])
+let buttonText;
+if (currentStepIndex === 0) {
+  buttonText = 'Become a tuber driver';
+} else if (currentStepIndex === 1) {
+  buttonText = 'Next';
+} else if (currentStepIndex === 2){
+  buttonText = 'Confirm';
+}
+else {
+  buttonText = isLastStep ? 'Finish' : `Step ${currentStepIndex + 1}`;
+}
 
-
+ 
   
   return  (
     <div className="page-container">
@@ -43,25 +54,31 @@ function App() {
 
         <div className="centered-div">
           <form action="" className='formholder'>
-            <div
-              style={{
-                position: 'absolute',
-                top: '.5rem',
-                right: '.5rem'
-              }}
-            >
-              {currentStepIndex + 1}/{steps.length}
+            <div className="stepsindicaterholder">
+            <span>
+             Step {currentStepIndex + 1}/{steps.length}
+            </span>
             </div>
+            <div className="stepsDivsIndicater">
+            {steps.map((_, index) => (
+          <span
+            key={index}
+            className={`colorStepsIndicater${index + 1} ${currentStepIndex >= index ? 'active' : ''}`}
+          ></span>
+        ))}
+            </div>
+            
             {step}
             <div className='buttonholder'>
-              {!isFirstStep && <button type="submit" onClick={back}>Back</button>}
+              {!isFirstStep && <button type="button" onClick={back}>Back  </button>}
+
               <button type="button"  className='nextbtn' onClick={next}>
-                {isLastStep ? 'Finish' : 'Next'}
+                {buttonText}
               </button>
 
     
             </div>
-            <p>Already have an account ? Sign in</p>
+            <p>Already have an account ?<a href="#">Sign in</a> </p>
           </form>
         </div>
       </div>

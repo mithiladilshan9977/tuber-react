@@ -108,12 +108,81 @@ flex-direction: column;
   background-color: #24242410;
 
 } 
+.titileholder{
+  padding: 15px;
+  display: flex;
+  justify-content: flex-start;
+}
 .createaccounttitle{
   font-size: 30px;
-  margin: 10px;
  
-  display: inline;
+  
 }
+.stepsindicaterholder{
+  display: flex;
+  justify-self: flex-start;
+  padding-left: 15px;
+  padding-top: 30px;
+}
+.stepsDivsIndicater{
+  display: flex;
+ 
+  justify-content: flex-start;
+}
+
+.colorStepsIndicater1{
+  width: 20%;
+  background-color: rgba(255, 166, 0, 0.326);
+  height: 10px;
+  border-radius: 10px;
+   margin-left: 5px;
+   margin-left: 5px;
+}
+.colorStepsIndicater2{
+  width: 20%;
+  background-color: rgba(255, 166, 0, 0.326);
+  height: 10px;
+  border-radius: 10px;
+   margin-left: 5px;
+   margin-left: 5px;
+}
+.colorStepsIndicater3{
+  width: 20%;
+  background-color: rgba(255, 166, 0, 0.326);
+  height: 10px;
+  border-radius: 10px;
+   margin-left: 5px;
+   margin-left: 5px;
+}
+.colorStepsIndicater4{
+  width: 20%;
+  background-color: rgba(255, 166, 0, 0.326);
+  height: 10px;
+  border-radius: 10px;
+   margin-left: 5px;
+   margin-left: 5px;
+}
+.colorStepsIndicater5{
+  width: 20%;
+  background-color: rgba(255, 166, 0, 0.326);
+  height: 10px;
+  border-radius: 10px;
+   margin-left: 5px;
+   margin-left: 5px;
+}
+
+.NextcolorStepsIndicater{
+  width: 20%;
+  background-color: rgba(255, 166, 0, 0.966);
+  height: 10px;
+  border-radius: 10px;
+   margin-left: 5px;
+   margin-left: 5px;
+}
+.active {
+  background-color: rgba(255, 166, 0, 0.966);
+}
+
 .checkboxholder{
  
   width: 100%;
@@ -145,7 +214,12 @@ flex-direction: column;
 }
 
 
-
+.titileHolderStep2{
+ padding-left: 15px;
+ display: flex;
+ 
+ justify-content: flex-start;
+}
 
 
 
