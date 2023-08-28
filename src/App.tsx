@@ -9,6 +9,11 @@ import { useMultistepForm } from './useMultistepForm'
 import { useState } from 'react'
 import WhatAreTheQuestions from './WhatAreTheQuestions'
 import OftenToGetPaid from './OftenToGetPaid'
+import CorrectIcon from './assets/correct_58wovqb649og_512.png'
+import AppleStore from './assets/appstore.jpeg'
+import GoogleAppStore from './assets/googleplaystore.jpeg'
+import MainLogoTuber from './assets/mainLogo.jpeg'
+import { OTPcheck } from './OTPcheck'
  
  
 function App() {
@@ -49,9 +54,11 @@ function App() {
  
  const {steps,currentStepIndex,step,isFirstStep,back,next,isLastStep}=useMultistepForm( [
  
-  <UserForm formData={step1Data} setFormData={setStep1Data}/> , <AddressForm formData={step2Data} setFormData={setStep2Data}/> ,<AccountForm formData={step3Data} setFormData={setStep3Data}/>,<TextDetails formData={step4Data} setFormData={setStep4Data}/>,<UploadFiles/> 
+  <UserForm formData={step1Data} setFormData={setStep1Data}/> ,<OTPcheck/>, <AddressForm formData={step2Data} setFormData={setStep2Data}/> ,<AccountForm formData={step3Data} setFormData={setStep3Data}/>,<TextDetails formData={step4Data} setFormData={setStep4Data}/>,<UploadFiles/> 
 
 ]);
+
+
 
 const handleNextClick1  = () => {
 
@@ -119,7 +126,7 @@ const [isOpen, setIsOpen] = useState(false);
   return  (
     <div className="page-container">
       <div className="tuberheadingdiv">
-          <span className="nametuber">Tuber</span>
+          <img src={MainLogoTuber} alt="Tuber Logo" />
         </div>
       <div className="mainholder">
         
@@ -131,10 +138,11 @@ const [isOpen, setIsOpen] = useState(false);
             <span className="orange-text">TUBER</span> driver
           </span>
 
-       <span className='requiremntsspan'>Requirments</span>
+       
        <div className="infoholder">
       {currentStepIndex === 0 ? (
         <>
+        <span className='requiremntsspan'>Requirments</span>
                   
                 <span className='normelText'>Age 18+</span>
                 <span className='normelText'>Driving license</span>
@@ -152,11 +160,31 @@ const [isOpen, setIsOpen] = useState(false);
         </>
       ) :(
         <>
-               <span className='normelText'>Want to be your own boss?</span>
-                <span className='normelText'>Apply to become a tuber driver and start earning extra income</span>
-                <span className='normelText'>Earn on your terms</span>
-                <span className='normelText'>Set your own schedule</span>
-                <span className='normelText'>Get paid weekly</span>
+                <div className="headingHolderInIndex2">
+                <span className='MainheadingInRequirments'>Want to be your own boss?</span>
+                <span className='MainheadingInRequirments'>Apply to become a tuber driver and start earning extra income</span>
+                </div>
+               
+               <div className="spanTagsHolder">
+               
+               <span className='textWithImageIcons'> <img src={CorrectIcon} alt="correct icon"  className='corerctIcon'/>   Earn on your terms</span>
+                <span className='textWithImageIcons'> <img src={CorrectIcon} alt="correct icon"  className='corerctIcon'/>  Set your own schedule</span>
+                <span className='textWithImageIcons'> <img src={CorrectIcon} alt="correct icon"  className='corerctIcon'/>  Get paid weekly</span>
+
+               </div>
+
+               <h1 className="diliverDriverText">Drive.Deliver.Earn.</h1>
+
+                <div className="GooglePalyStoreDivHolder">
+                  <span>Get TUBER driver app now</span>
+                  <div>
+                    <img src={GoogleAppStore} alt=""   />
+                    <img src={AppleStore} alt=""  />
+                  </div>
+
+
+                </div>
+               
         </>
       )
       
@@ -192,6 +220,9 @@ const [isOpen, setIsOpen] = useState(false);
               <button type="button"  className='nextbtn' onClick={handleNextClick}>
                 {buttonText}
               </button>
+
+           
+
 
     
             </div>

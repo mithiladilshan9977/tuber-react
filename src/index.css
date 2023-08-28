@@ -46,11 +46,12 @@ body {
   width: 100%;
   background-color: black;
 }
-.nametuber{
-  color: orange;
-  font-size: 20px;
-  margin: 10px;
+.tuberheadingdiv img{
+  height: 40px;
+  padding: 10px 30px;
+
 }
+ 
 
  
  .mainholder{
@@ -65,7 +66,11 @@ body {
  .orange-text {
   color: #EF4D24;
 }
-
+.MainheadingInRequirments{
+  color: black;
+  font-size: 17px;
+  font-weight: 900;
+}
 .left-side {
   width: 50%;
   height: 100%;
@@ -85,10 +90,69 @@ body {
  .requiremntsspan{
   color: black;
   font-size: 20px;
+  margin-top: 20px;
   text-transform: uppercase;
   font-weight: 700;
-  margin-top: 32px;
+  margin-bottom: 10px;
+ 
  }
+ .headingHolderInIndex2{
+  margin-top: 35px;
+  display: flex;
+ 
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+ }
+ .spanTagsHolder{
+  margin-top: 15px;
+  display: flex;
+ 
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+ }
+ .corerctIcon{
+  width: 20px;
+  height: 20px;
+  position: relative;
+ top: 4px;
+ margin-right: 7px;
+}
+.textWithImageIcons{
+  font-weight: 800;
+  font-size: 14px;
+  margin-top:7px;
+  margin-top: 7px;
+}
+.diliverDriverText{
+  position: relative;
+  top: 22px;
+}
+.GooglePalyStoreDivHolder{
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.GooglePalyStoreDivHolder span{
+  color: black;
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-size: 15px;
+}
+.GooglePalyStoreDivHolder div{
+ display: flex;
+ flex-direction: row;
+ justify-content: flex-start;
+}
+.GooglePalyStoreDivHolder div img{
+  height: 45px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
  .normelText {
   position: relative;
   padding-left: 20px;  
@@ -134,12 +198,90 @@ flex-direction: column;
   border-radius: 10px;
   margin: 10px;
   padding: 15px;
+ 
   background-color: #7979790b;
   font-weight: 700;
   font-family: Arial, Helvetica, sans-serif;
   color: black;
   border: 2px solid rgba(0, 0, 0, 0.11);  
 }
+
+
+ .container{
+  margin: 10px;
+ }
+ .OTPtextHolder{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 2px;
+  margin-top: 22px;
+ }
+ .OTPtextHolder span{
+ 
+  font-weight: 700;
+ }
+.otpPhoneNumber{
+  color: #EF4D24;
+}
+.phoneInputRow {
+  display: flex;
+  
+  margin: 0 auto;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 10px;
+ 
+}
+.OTPnumberHolder{
+  width: 100%;
+ 
+  display: flex;
+  padding: 15px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+}
+.OTPnumberFields::-webkit-inner-spin-button,
+.OTPnumberFields::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0; /* Some margin may be needed to prevent overlap */
+}
+ 
+
+.OTPnumberHolder input{
+ height: 50px;
+ margin-right: 10px;
+ -moz-appearance: textfield;
+ text-align: center;
+ width: 50px;
+ border-radius: 10px;
+ font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  text-align: center;
+}
+
+.resentTextHolder{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 15px;
+  margin-bottom: 40px;
+}
+.phoneInputField {
+  width: 100%;
+  border-radius: 10px;
+  padding: 15px 55px;
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  border: 2px solid rgba(0, 0, 0, 0.11); 
+  
+}
+
+ 
  
 
  
