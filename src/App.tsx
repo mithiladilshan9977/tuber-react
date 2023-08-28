@@ -1,10 +1,8 @@
- 
- 
+
 import { AccountForm } from './AccountForm'
 import { AddressForm } from './AddressForm'
 import './App.css'
 import { TextDetails } from './TextDetails'
- 
 import { UserForm } from './UserForm'
 import { UploadFiles } from './UploadFiles'
 import { useMultistepForm } from './useMultistepForm'
@@ -14,22 +12,90 @@ import OftenToGetPaid from './OftenToGetPaid'
  
  
 function App() {
+
+  const [step1Data, setStep1Data] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    termsAndConditions: false,
+  });
+
+  const [step2Data, setStep2Data] = useState({
+    dateOfBirth: "",
+    driverLicenseNo: "",
+    city: "",
+    password: "",
+  });
+
+  const [step3Data, setStep3Data] = useState({
+    vehicleType: "",
+    vehicleMake: "",
+    vehicleModel: "",
+    year: "",
+    vehiclePlate:"",
+  });
+
+  const [step4Data, setStep4Data] = useState({
+    ABN: "",
+    businessName: "",
+    GST: "",
+    streetAddress: "",
+    suberb:"",
+    postalCode: "",
+    state:"",
+    country:"",
+  });
  
  const {steps,currentStepIndex,step,isFirstStep,back,next,isLastStep}=useMultistepForm( [
  
-  <UserForm/> , <AddressForm/> ,<AccountForm/>,<TextDetails/>,<UploadFiles/> 
+  <UserForm formData={step1Data} setFormData={setStep1Data}/> , <AddressForm formData={step2Data} setFormData={setStep2Data}/> ,<AccountForm formData={step3Data} setFormData={setStep3Data}/>,<TextDetails formData={step4Data} setFormData={setStep4Data}/>,<UploadFiles/> 
 
-])
+]);
+
+const handleNextClick1  = () => {
+
+  sessionStorage.setItem("step1Data", JSON.stringify(step1Data));
+  // Call the next function to advance to the next step
+  next();
+};
+const handleNextClick2  = () => {
+
+  sessionStorage.setItem("step2Data", JSON.stringify(step2Data));
+  // Call the next function to advance to the next step
+  next();
+};
+
+const handleNextClick3  = () => {
+
+  sessionStorage.setItem("step3Data", JSON.stringify(step3Data));
+  // Call the next function to advance to the next step
+  next();
+};
+const handleNextClick4  = () => {
+
+  sessionStorage.setItem("step4Data", JSON.stringify(step4Data));
+  // Call the next function to advance to the next step
+  next();
+};
+
 let buttonText;
+let handleNextClick
+
 if (currentStepIndex === 0) {
   buttonText = 'Become a tuber driver';
+  handleNextClick = handleNextClick1;
+
 } else if (currentStepIndex === 1) {
   buttonText = 'Next';
+  handleNextClick = handleNextClick2;
 } else if (currentStepIndex === 2){
   buttonText = 'Next';
+  handleNextClick = handleNextClick3;
 }
 else  if( currentStepIndex === 3){
   buttonText = 'Confirm';
+  handleNextClick = handleNextClick4;
 }
 else {
   buttonText = isLastStep ? 'Submit' : `Step ${currentStepIndex + 1}`;
@@ -123,7 +189,7 @@ const [isOpen, setIsOpen] = useState(false);
             <div className='buttonholder'>
               {!isFirstStep && <button type="button" onClick={back} className='backbtn'>Back  </button>}
 
-              <button type="button"  className='nextbtn' onClick={next}>
+              <button type="button"  className='nextbtn' onClick={handleNextClick}>
                 {buttonText}
               </button>
 

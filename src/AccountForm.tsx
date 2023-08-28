@@ -1,22 +1,29 @@
- 
+ export function AccountForm({ formData, setFormData }){
 
-export function AccountForm(){
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+      const { name, value} = e.target;
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+
+    };
+
     return (
        
- 
-
-<>
-
-<div className="titileholder">
+    <>
+      <div className="titileholder">
         <span className="createaccounttitle">Vehicle information</span>
         </div>
-
-
-
-          <select name="" id="" className="inputfields">
+        
+          <select 
+            name="vehicleType"
+            value={formData.vehicleType}
+            onChange={handleInputChange}
+            className="inputfields">
 
             <option value="">Select your vehicle type</option>
-            <option value="">Toyota</option>
+            <option value="Toyota">Toyota</option>
             <option value="">Lambo</option>
             <option value="">Lambo lanka</option>
             <option value="">Sri Lambo</option>
@@ -24,7 +31,11 @@ export function AccountForm(){
 
 
 
-         <select name="" id="" className="inputfields">
+         <select 
+          name="vehicleMake"
+          value={formData.vehicleMake}
+          onChange={handleInputChange}
+          className="inputfields">
 
             <option value="">Vehical make</option>
             <option value="">type2</option>
@@ -34,13 +45,40 @@ export function AccountForm(){
          </select>
 
 
-         <input  autoFocus required type="text" placeholder="Vehicle model" className="inputfields"/>
+        <input  
+          autoFocus 
+          required 
+          type="text" 
+          placeholder="Vehicle model" 
+          className="inputfields"
+          name="vehicleModel"
+          value={formData.vehicleModel}
+          onChange={handleInputChange}
+        />
 
 
-         <input  autoFocus required type="text" placeholder="Year" className="inputfields"/>
+        <input  
+          autoFocus 
+          required 
+          type="text" 
+          placeholder="Year" 
+          name="year"
+          value={formData.year}
+          onChange={handleInputChange}
+          className="inputfields"
+        />
 
 
-         <input  autoFocus required type="number" placeholder="Enter your vehicle plate Number" className="inputfields"/>
+         <input 
+          autoFocus 
+          required 
+          type="text" 
+          placeholder="Enter your vehicle plate Number" 
+          className="inputfields"
+          name="vehiclePlate"
+          value={formData.vehiclePlate}
+          onChange={handleInputChange}
+         />
 
 
         </>
