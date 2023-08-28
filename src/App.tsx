@@ -11,6 +11,8 @@ import WhatAreTheQuestions from './WhatAreTheQuestions'
 import OftenToGetPaid from './OftenToGetPaid'
 import CorrectIcon from './assets/correct_58wovqb649og_512.png'
 import AppleStore from './assets/appstore.jpeg'
+import TuberMan from './assets/tuberman.jpeg'
+
 import GoogleAppStore from './assets/googleplaystore.jpeg'
 import MainLogoTuber from './assets/mainLogo.jpeg'
 import { OTPcheck } from './OTPcheck'
@@ -52,11 +54,12 @@ function App() {
     country:"",
   });
  
- const {steps,currentStepIndex,step,isFirstStep,back,next,isLastStep}=useMultistepForm( [
+ const {steps,currentStepIndex,step,isFirstStep,back,next,renderOTPform,isLastStep}=useMultistepForm( [
  
-  <UserForm formData={step1Data} setFormData={setStep1Data}/> ,<OTPcheck/>, <AddressForm formData={step2Data} setFormData={setStep2Data}/> ,<AccountForm formData={step3Data} setFormData={setStep3Data}/>,<TextDetails formData={step4Data} setFormData={setStep4Data}/>,<UploadFiles/> 
+  <UserForm formData={step1Data} setFormData={setStep1Data}/> ,  <AddressForm formData={step2Data} setFormData={setStep2Data}/> ,<AccountForm formData={step3Data} setFormData={setStep3Data}/>,<TextDetails formData={step4Data} setFormData={setStep4Data}/>,<UploadFiles/>,<OTPcheck/> 
 
 ]);
+
 
 
 
@@ -85,6 +88,12 @@ const handleNextClick4  = () => {
   // Call the next function to advance to the next step
   next();
 };
+const handleNextClick5 = () => {
+
+  
+  renderOTPform();
+};
+
 
 let buttonText;
 let handleNextClick
@@ -103,6 +112,9 @@ if (currentStepIndex === 0) {
 else  if( currentStepIndex === 3){
   buttonText = 'Confirm';
   handleNextClick = handleNextClick4;
+}else  if( currentStepIndex === 4){
+  buttonText = 'Confirm';
+  handleNextClick = handleNextClick5;
 }
 else {
   buttonText = isLastStep ? 'Submit' : `Step ${currentStepIndex + 1}`;
@@ -131,108 +143,151 @@ const [isOpen, setIsOpen] = useState(false);
       <div className="mainholder">
         
 
-        <div className="left-side">
+      {currentStepIndex !== 5 ? (
+  <div className="left-side">
+    <span className="spantags">Sign up to become</span>
+    <span className="spantags">
+      <span className="orange-text">TUBER</span> driver
+    </span>
 
-        <span className="spantags">Sign up to become</span>
-          <span className="spantags">
-            <span className="orange-text">TUBER</span> driver
-          </span>
-
-       
-       <div className="infoholder">
+    <div className="infoholder">
       {currentStepIndex === 0 ? (
         <>
-        <span className='requiremntsspan'>Requirments</span>
-                  
-                <span className='normelText'>Age 18+</span>
-                <span className='normelText'>Driving license</span>
-                <span className='normelText'>Car(roadworthy, registered, and with a current CTP insurance policy)</span>
-                <span className='normelText'>An Austrailan Business Number (ABN)</span>
-                <span className='normelText'>Smartphone with IOS 12 /Android 6.0</span>
-                <span className='normelText'>Right to work in Austraila</span>
-                <span className='normelText'>It's your responsibility to keep your documents up to date if they expire</span>
+          <span className='requiremntsspan'>Requirments</span>
+          <span className='normelText'>Age 18+</span>
+          <span className='normelText'>Driving license</span>
+          <span className='normelText'>Car(roadworthy, registered, and with a current CTP insurance policy)</span>
+          <span className='normelText'>An Austrailan Business Number (ABN)</span>
+          <span className='normelText'>Smartphone with IOS 12 /Android 6.0</span>
+          <span className='normelText'>Right to work in Austraila</span>
+          <span className='normelText'>It's your responsibility to keep your documents up to date if they expire</span>
 
-
-                   <WhatAreTheQuestions isOpen={isOpen} handleQuestionClick={handleQuestionClick} />
-                   <OftenToGetPaid isOpen2={isOpen2} handleOfftenQuestionClick={handleOfftenQuestionClick} />
-
-                   
+          <WhatAreTheQuestions isOpen={isOpen} handleQuestionClick={handleQuestionClick} />
+          <OftenToGetPaid isOpen2={isOpen2} handleOfftenQuestionClick={handleOfftenQuestionClick} />
         </>
-      ) :(
+      ) : (
         <>
-                <div className="headingHolderInIndex2">
-                <span className='MainheadingInRequirments'>Want to be your own boss?</span>
-                <span className='MainheadingInRequirments'>Apply to become a tuber driver and start earning extra income</span>
-                </div>
-               
-               <div className="spanTagsHolder">
-               
-               <span className='textWithImageIcons'> <img src={CorrectIcon} alt="correct icon"  className='corerctIcon'/>   Earn on your terms</span>
-                <span className='textWithImageIcons'> <img src={CorrectIcon} alt="correct icon"  className='corerctIcon'/>  Set your own schedule</span>
-                <span className='textWithImageIcons'> <img src={CorrectIcon} alt="correct icon"  className='corerctIcon'/>  Get paid weekly</span>
+          <div className="headingHolderInIndex2">
+            <span className='MainheadingInRequirments'>Want to be your own boss?</span>
+            <span className='MainheadingInRequirments'>Apply to become a tuber driver and start earning extra income</span>
+          </div>
 
-               </div>
+          <div className="spanTagsHolder">
+            <span className='textWithImageIcons'> <img src={CorrectIcon} alt="correct icon"  className='corerctIcon'/>   Earn on your terms</span>
+            <span className='textWithImageIcons'> <img src={CorrectIcon} alt="correct icon"  className='corerctIcon'/>  Set your own schedule</span>
+            <span className='textWithImageIcons'> <img src={CorrectIcon} alt="correct icon"  className='corerctIcon'/>  Get paid weekly</span>
+          </div>
 
-               <h1 className="diliverDriverText">Drive.Deliver.Earn.</h1>
+          <h1 className="diliverDriverText">Drive.Deliver.Earn.</h1>
 
-                <div className="GooglePalyStoreDivHolder">
+          <div className="GooglePalyStoreDivHolder">
+            <span>Get TUBER driver app now</span>
+            <div>
+              <img src={GoogleAppStore} alt=""   />
+              <img src={AppleStore} alt=""  />
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  </div>
+):(
+  <> 
+  <div className="final-image-left-side">
+
+    <img src={TuberMan} alt="" />
+  </div>
+  
+  </>
+)}
+
+        <div className="centered-div">
+          
+        {currentStepIndex !== 5 ? (
+    <div className="formWrapper">
+      <form action="" className="formholder">
+        <div className="stepsindicaterholder">
+          <span>
+            Step {currentStepIndex + 1}/{steps.length}
+          </span>
+        </div>
+        <div className="stepsDivsIndicater">
+          {steps.map((_, index) => (
+            <span
+              key={index}
+              className={`colorStepsIndicater${index + 1} ${
+                currentStepIndex >= index ? "active" : ""
+              }`}
+            ></span>
+          ))}
+        </div>
+
+        {step}
+        <div className="buttonholder">
+          {!isFirstStep && (
+            <button type="button" onClick={back} className="backbtn">
+              Back
+            </button>
+          )}
+
+          <button type="button" className="nextbtn" onClick={handleNextClick}>
+            {buttonText}
+          </button>
+        </div>
+        {currentStepIndex === 0 && (
+          <p className="alreadyHaveAccount">
+            Already have an account ?<a href="#" className="signLink">Sign in</a>
+          </p>
+        )}
+      </form>
+    </div>
+  ) : (
+    <>
+                 <div className="finalPageHolderDiv">
+                      
+                      <div className="contentHolderDiv">
+                        <span>Registration Successful !</span>
+
+                        <h2>Welcome to </h2>
+                        <img src={MainLogoTuber} alt="" />
+                         <div className="textConetctHolder">
+                         <p>We are pleased to inform you that your registration process has been completed successfully.
+                           However, please be aware that your account is currently under review. 
+                          You will receive an email notification once your account is active and ready to use.</p>
+                          <p>We kindly advise you to Install the TUBER app on your mobile phone,
+                             as it will allow you to fully enjoy all the features and benefits of our platform.</p>
+                         </div>
+                        
+                         <div className="GooglePalyStoreDivHolder">
                   <span>Get TUBER driver app now</span>
-                  <div>
-                    <img src={GoogleAppStore} alt=""   />
-                    <img src={AppleStore} alt=""  />
+                  <div className='appIconsHolders'>
+                    <img src={GoogleAppStore} alt="google app"   />
+                    <img src={AppleStore} alt="I phone app"  />
                   </div>
 
 
                 </div>
+                
+
+                <div className="buttonholder">
+          {!isFirstStep && (
+            <button type="button" onClick={back} className="nextbtn">
+             Back to web site
+            </button>
+          )}
+
+          <button type="button" className="finalFAQsbtn" onClick={handleNextClick}>
+             FAQs
+          </button>
+        </div>
+
+                      </div>
+                    
+                      
+                 </div>
                
-        </>
-      )
-      
-    
-    }
-
-       </div>
-       
-        
-      </div>
-
-        <div className="centered-div">
-          <div className="formWrapper">
-          <form action="" className='formholder'>
-            <div className="stepsindicaterholder">
-            <span>
-             Step {currentStepIndex + 1}/{steps.length}
-            </span>
-            </div>
-            <div className="stepsDivsIndicater">
-            {steps.map((_, index) => (
-          <span
-            key={index}
-            className={`colorStepsIndicater${index + 1} ${currentStepIndex >= index ? 'active' : ''}`}
-          ></span>
-        ))}
-            </div>
-            
-            {step}
-            <div className='buttonholder'>
-              {!isFirstStep && <button type="button" onClick={back} className='backbtn'>Back  </button>}
-
-              <button type="button"  className='nextbtn' onClick={handleNextClick}>
-                {buttonText}
-              </button>
-
-           
-
-
-    
-            </div>
-            {currentStepIndex === 0 && (
-  <p className='alreadyHaveAccount'>
-    Already have an account ?<a href="#" className='signLink'>Sign in</a>
-  </p>
-)}
-          </form>
-          </div>
+        </> 
+  )}
         </div>
       </div>
     </div>

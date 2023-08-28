@@ -81,6 +81,21 @@ body {
   flex-direction: column;
   align-items: flex-start;
 }
+.final-image-left-side {
+  width: 50%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.final-image-left-side img {
+  width: 100%;  
+  height: 100%; 
+  object-fit: cover; 
+  padding-left: ;
+}
 
  .spantags{
   color: black;
@@ -367,6 +382,7 @@ flex-direction: column;
    margin-left: 5px;
 }
 
+
 .NextcolorStepsIndicater{
   width: 20%;
   background-color: #ef4d243f;
@@ -399,6 +415,16 @@ flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+.finalbuttonholder{
+  width: 100%;
+ 
+ 
+  display: flex;
+  flex-direction: row;
+ 
+  justify-content: center;
+  align-items: center;
+}
 .nextbtn {
   width: 100%;
   color: white;
@@ -412,6 +438,19 @@ flex-direction: column;
   display: block;
   background-image: linear-gradient(45deg,  #EF4D24, #efa824);
 }
+.finalnextbtn{
+  width: 100%;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 14px 10px;
+ margin-right: 10px;
+  display: block;
+  background-image: linear-gradient(45deg,  #EF4D24, #efa824);
+}
 .backbtn{
   width: 50%;
   color: black;
@@ -419,6 +458,18 @@ flex-direction: column;
   font-weight: bold;
   background-color: rgba(128, 128, 128, 0.171);
   border: none;
+  cursor: pointer;
+  padding: 14px 10px;
+  border-radius: 10px;
+}
+.finalFAQsbtn{
+  width: 90%;
+  color: black;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-right: 55px;
+  background-color: rgba(128, 128, 128, 0.171);
+  border: 1px solid rgba(0, 0, 0, 0.201);
   cursor: pointer;
   padding: 14px 10px;
   border-radius: 10px;
@@ -597,7 +648,50 @@ flex-direction: column;
   display: none; /* Hide the default file input appearance */
 }
 
+.finalPageHolderDiv{
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg,rgba(241, 222, 186, 0.078), rgba(255, 166, 0, 0.250));
+ 
+}
+.contentHolderDiv{
+  display: flex;
 
+  padding-left: 60px;
+  position: relative;
+  padding-right: 30px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+ padding-top: 50px;
+ text-align: left;
+}
+
+.contentHolderDiv span{
+  color: rgba(0, 0, 0, 0.771);
+  font-weight: 800;
+  
+}
+.contentHolderDiv h2{
+   color: black;
+   font-size: 25px;
+   font-weight: 600;
+}
+.contentHolderDiv img{
+  position: relative;
+  bottom: 20px;
+  height: 50px;
+}
+.contentHolderDiv p{
+  font-size: 15px;
+  color: rgb(0, 0, 0);
+}
+.appIconsHolders{
+  margin-top: 20px;
+}
+ .tudentManImage{
+  height: 550px;
+ }
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
