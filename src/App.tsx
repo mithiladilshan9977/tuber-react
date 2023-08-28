@@ -208,7 +208,7 @@ const [isOpen, setIsOpen] = useState(false);
       <form action="" className="formholder">
         <div className="stepsindicaterholder">
           <span>
-            Step {currentStepIndex + 1}/{steps.length}
+            Step {currentStepIndex + 1}/{steps.length -1}
           </span>
         </div>
         <div className="stepsDivsIndicater">
