@@ -41,6 +41,7 @@ function App() {
     driverLicenseNo: "",
     city: "",
     password: "",
+    ConfirmPassword:""
   });
 
   const [step3Data, setStep3Data] = useState({
@@ -70,50 +71,197 @@ function App() {
 
 
 const [showDiv, setShowDiv] = useState(false);
-
+const [showErrorMessage, setShowErrorMessage] = useState(false);
+const [errorMessage, setErrorMessage] = useState('');
+ 
 const handleNextClick1  = () => {
+ 
 
-  sessionStorage.setItem("step1Data", JSON.stringify(step1Data));
-  // Call the next function to advance to the next step
-  // GettingReturningValueToShowOTPpage(); 
-  setShowDiv(true);
-  // next();
+  if(!step1Data.firstName){
+    setErrorMessage('Please enter your first name');
+    setShowErrorMessage(true);
+     
+  }
+  else if(!step1Data.lastName){
+    setErrorMessage('Please enter your last name');
+    setShowErrorMessage(true);
+  }
+  else if(!step1Data.email){
+    setErrorMessage('Please enter your E-mail address');
+    setShowErrorMessage(true);
+  }
+  
+  
+  else{
+    setErrorMessage('');
+      setShowErrorMessage(false);
+      sessionStorage.setItem('step1Data', JSON.stringify(step1Data));
+      setShowDiv(true);
+  }
+
+  
+ 
 };
-const handleNextClick2  = () => {
 
+
+const handleNextClick2  = () => {
+ 
+ if(!step2Data.dateOfBirth){
+  setErrorMessage('Please enter your birth date');
+  setShowErrorMessage(true);
+ }
+ else if(!step2Data.driverLicenseNo){
+  setErrorMessage('Please enter your driver license No');
+  setShowErrorMessage(true);
+ }
+
+ else if(!step2Data.city){
+  setErrorMessage('Please select your city driver in');
+  setShowErrorMessage(true);
+ }
+
+ else if(!step2Data.password){
+  setErrorMessage('Please enter a password');
+  setShowErrorMessage(true);
+ }
+ else if(!step2Data.ConfirmPassword){
+  setErrorMessage('Please re-enter your password');
+  setShowErrorMessage(true);
+ }
+ else if(step2Data.password != step2Data.ConfirmPassword){
+  setErrorMessage('Passwords not matching');
+  setShowErrorMessage(true);
+ }
+ 
+ else{
+  setErrorMessage('');
+  setShowErrorMessage(false);
   sessionStorage.setItem("step2Data", JSON.stringify(step2Data));
-  // Call the next function to advance to the next step
+ 
   setShowDiv(false);
   next();
-};
+}
+ }
+ 
+
+const GoNextAfterOTPConfirmation  = () => {
+ 
+ 
+  setShowDiv(false);
+  next();
+}
+
+
+
+
+
+  
 
 const handleNextClick3  = () => {
+   
+  if(!step3Data.vehicleType){
+    setErrorMessage('Please select your vehicle type');
+    setShowErrorMessage(true);
+   }
+   else if(!step3Data.vehicleMake){
+    setErrorMessage('Please select your vehicle make');
+    setShowErrorMessage(true);
+   }
+   else if(!step3Data.vehicleModel){
+    setErrorMessage('Please enter your vehicle model');
+    setShowErrorMessage(true);
+   }
+   else if(!step3Data.year){
+    setErrorMessage('Please enter year');
+    setShowErrorMessage(true);
+   }
+   else if(!step3Data.vehiclePlate){
+    setErrorMessage('Please enter your driving plate No');
+    setShowErrorMessage(true);
+   }else{
+    setErrorMessage('');
+  setShowErrorMessage(false)
+    sessionStorage.setItem("step3Data", JSON.stringify(step3Data));
+    // Call the next function to advance to the next step
+    next();
+   }
 
-  sessionStorage.setItem("step3Data", JSON.stringify(step3Data));
-  // Call the next function to advance to the next step
-  next();
+
+
 };
+
+
+
+
 const handleNextClick4  = () => {
 
-  sessionStorage.setItem("step4Data", JSON.stringify(step4Data));
-  // Call the next function to advance to the next step
-  next();
+  if(!step4Data.ABN){
+    setErrorMessage('Please your ABN');
+    setShowErrorMessage(true);
+   }
+   else if (!step4Data.businessName){
+    setErrorMessage('Please your business name');
+    setShowErrorMessage(true);
+   }
+
+   else if (!step4Data.GST){
+    setErrorMessage('Please select your GST');
+    setShowErrorMessage(true);
+   }
+
+   else if (!step4Data.streetAddress){
+    setErrorMessage('Please your street address');
+    setShowErrorMessage(true);
+   }
+
+   else if (!step4Data.suberb){
+    setErrorMessage('Please enter your suberb');
+    setShowErrorMessage(true);
+   }
+
+   else if (!step4Data.postalCode){
+    setErrorMessage('Please enter your postal code');
+    setShowErrorMessage(true);
+   }
+
+   else if (!step4Data.state){
+    setErrorMessage('Please select your state');
+    setShowErrorMessage(true);
+   }
+
+   else if (!step4Data.country){
+    setErrorMessage('Please selecy your country');
+    setShowErrorMessage(true);
+   }else{
+    setErrorMessage('');
+  setShowErrorMessage(false)
+    sessionStorage.setItem("step4Data", JSON.stringify(step4Data));
+    // Call the next function to advance to the next step
+    next();
+   }
+
+
+  
 };
 const handleNextClick5 = () => {
 
   
   renderOTPform();
 };
-
+ 
 
 let buttonText;
 let handleNextClick
+let setHeadingText
 
 if (currentStepIndex === 0) {
+  console.log(currentStepIndex + "  0000000");
   buttonText = 'Become a tuber driver';
   handleNextClick = handleNextClick1;
 
 } else if (currentStepIndex === 1) {
+ 
+
   buttonText = 'Next';
   handleNextClick = handleNextClick2;
 } else if (currentStepIndex === 2){
@@ -131,7 +279,25 @@ else {
   buttonText = isLastStep ? 'Submit' : `Step ${currentStepIndex + 1}`;
 }
 
- 
+// setting heading text
+
+if(currentStepIndex ===0){
+  setHeadingText ="Create your tuber account";
+}else if(currentStepIndex === 1){
+  setHeadingText ="Driver information";
+
+}else if(currentStepIndex ===2){
+  setHeadingText="Vehicle information";
+}
+else if(currentStepIndex ===3){
+  setHeadingText="TAX DETAILS";
+}
+else if(currentStepIndex ===4){
+  setHeadingText="UPLOAD REQUIRED DOCUMENTS";
+}
+ else{
+  setHeadingText="";
+ }
 const [isOpen, setIsOpen] = useState(false);
 
   const handleQuestionClick = () => {
@@ -202,10 +368,10 @@ const [isOpen, setIsOpen] = useState(false);
           <img src={MainLogoTuber} alt="Tuber Logo" />
         </div>
       <div className="mainholder">
-        
 
       {currentStepIndex !== 5 ? (
   <div className="left-side">
+    
     <span className="spantags">Sign up to become</span>
     <span className="spantags">
       <span className="orange-text">TUBER</span> driver
@@ -236,6 +402,7 @@ const [isOpen, setIsOpen] = useState(false);
 
     {!showDiv && (<>
       <div className="infoholder">
+        
       {currentStepIndex === 0 ?  (
         <>
           <span className='requiremntsspan'>Requirments</span>
@@ -304,7 +471,7 @@ const [isOpen, setIsOpen] = useState(false);
         {currentStepIndex !== 5 ? (
     <div className="formWrapper">
       <form action="" className="formholder">
-
+       
  
         <div className="stepsindicaterholder">
           <span>
@@ -320,12 +487,25 @@ const [isOpen, setIsOpen] = useState(false);
               }`}
             ></span>
           ))}
+          
         </div>
+
+
+
+     
+
+      <div className="titileholder">
+        <span className="createaccounttitle">{setHeadingText}</span>
+        
+
+      </div>
+      {showErrorMessage && <span className='ErrorMessage'>{errorMessage}</span>}
          
         {showDiv && (<>
 
           <div className="titileholder">
             <span className="createaccounttitle">Verify your phone </span>
+            
         </div>
 
 <div className="OTPtextHolder">
@@ -350,7 +530,7 @@ const [isOpen, setIsOpen] = useState(false);
         <span className="resendText">Resend code in 0:14</span>
 
         </div>
-           <button className='OTPConfirmBtn' type='button' onClick={handleNextClick2}>Confirm</button>
+           <button className='OTPConfirmBtn' type='button' onClick={GoNextAfterOTPConfirmation}>Confirm</button>
         
         </>)
         
@@ -463,6 +643,10 @@ export default App
 
  
  
+
+function setTheErrorMessage(arg0: string) {
+  throw new Error('Function not implemented.')
+}
 // import { AccountForm } from './AccountForm'
 // import { AddressForm } from './AddressForm'
 // import './App.css'
