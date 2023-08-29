@@ -18,6 +18,12 @@ import GoogleAppStore from './assets/googleplaystore.jpeg'
 import MainLogoTuber from './assets/mainLogo.jpeg'
 import { OTPcheck } from './OTPcheck'
 import DoINeedToDropOff from './DoINeedToDropOff'
+import HowHeavyIsTheParcel from './HeavyIsTheParcel'
+import DrivingRange from './DrivingRange'
+import SpecialInsuarance from './SpecialInsuarace'
+import DriveOldCar from './DriveOldCar'
+import JobsCanIGet from './JobsCanIget'
+import MapApplication from './MapApplication'
  
  
 function App() {
@@ -146,6 +152,49 @@ const [isOpen, setIsOpen] = useState(false);
   };
 
 
+  const [isOpen4, setIsOpen4] = useState(false);
+
+  const HowHeavyTheParcelQuestionClick = () => {
+    setIsOpen4(!isOpen4);
+  };
+
+  const [isOpen5, setIsOpen5] = useState(false);
+
+  const DriveingRangeQuestionClick = () => {
+    setIsOpen5(!isOpen5);
+  };
+
+
+  const [isOpen6, setIsOpen6] = useState(false);
+
+  const SpecialInsuaranceQuestionClick = () => {
+    setIsOpen6(!isOpen6);
+  };
+
+
+  const [isOpen7, setIsOpen7] = useState(false);
+
+  const DriveOldCarQuestionClick = () => {
+    setIsOpen7(!isOpen7);
+  };
+
+
+  const [isOpen8, setIsOpen8] = useState(false);
+
+  const JobsCanIGetQuestionClick = () => {
+    setIsOpen8(!isOpen8);
+  };
+
+
+  const [isOpen9, setIsOpen9] = useState(false);
+
+  const MapApplicationQuestionClick = () => {
+    setIsOpen9(!isOpen9);
+  };
+
+
+
+
  
   return  (
     <div className="page-container">
@@ -203,10 +252,12 @@ const [isOpen, setIsOpen] = useState(false);
             <WhatAreTheQuestions isOpen={isOpen} handleQuestionClick={handleQuestionClick} />
             <OftenToGetPaid isOpen2={isOpen2} handleOfftenQuestionClick={handleOfftenQuestionClick} />
             <DoINeedToDropOff isOpen3={isOpen3} DropOffQuestionClick={DropOffQuestionClick} />
-            <OftenToGetPaid isOpen2={isOpen2} handleOfftenQuestionClick={handleOfftenQuestionClick} />
-            <OftenToGetPaid isOpen2={isOpen2} handleOfftenQuestionClick={handleOfftenQuestionClick} />
-            <OftenToGetPaid isOpen2={isOpen2} handleOfftenQuestionClick={handleOfftenQuestionClick} />
-            <OftenToGetPaid isOpen2={isOpen2} handleOfftenQuestionClick={handleOfftenQuestionClick} />
+            <HowHeavyIsTheParcel isOpen4={isOpen4} HowHeavyTheParcelQuestionClick={HowHeavyTheParcelQuestionClick} />
+            <DrivingRange isOpen5={isOpen5} DriveingRangeQuestionClick={DriveingRangeQuestionClick} />
+            <SpecialInsuarance isOpen6={isOpen6} SpecialInsuaranceQuestionClick={SpecialInsuaranceQuestionClick} />
+            <DriveOldCar isOpen7={isOpen7} DriveOldCarQuestionClick={DriveOldCarQuestionClick} />
+            <JobsCanIGet isOpen8={isOpen8} JobsCanIGetQuestionClick={JobsCanIGetQuestionClick} />
+            <MapApplication isOpen9={isOpen9} MapApplicationQuestionClick={MapApplicationQuestionClick} />
             
              </div>
           

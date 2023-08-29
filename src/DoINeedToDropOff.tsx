@@ -12,7 +12,7 @@ interface DoINeedToDropOffProps {
         <p className='question' onClick={DropOffQuestionClick}>What do I need to drop off?</p>
         <div className={`answerHolder ${isOpen3 ? 'open' : ''}`}>
           {isOpen3 && (
-            <span>All items are general building materials and household goods that can easily fit within a standard car</span>
+            <span>All items are general building materials and household goods that can easily fit within a standard car.</span>
           )}
         </div>
       </div>

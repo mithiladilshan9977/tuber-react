@@ -526,6 +526,7 @@ flex-direction: column;
   color: rgba(0, 0, 0, 0.47);
   font-size: 13px;
   padding-right: 5px;
+  text-align: left;
   font-weight: 600;
  margin-bottom: 5px;
 }
