@@ -16,9 +16,14 @@ export function useMultistepForm(steps: ReactElement[]) {
       return i - 1;
     });
   }
+  function GettingReturningValueToShowOTPpage(){
+    if (currentStepIndex === 0) {
+      return 60; 
+    }
+  }
 
   function renderOTPform() {
-    setCurrentStepIndex(steps.length - 1); // Move to the last step
+    setCurrentStepIndex(steps.length - 1);  
   }
 
   function goTo(index: number) {
@@ -31,6 +36,7 @@ export function useMultistepForm(steps: ReactElement[]) {
     steps,
     isFirstStep: currentStepIndex === 0,
     isLastStep: currentStepIndex === steps.length - 1,
+    GettingReturningValueToShowOTPpage,
     goTo,
     next,
     renderOTPform,

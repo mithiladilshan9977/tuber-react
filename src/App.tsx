@@ -12,10 +12,12 @@ import OftenToGetPaid from './OftenToGetPaid'
 import CorrectIcon from './assets/correct_58wovqb649og_512.png'
 import AppleStore from './assets/appstore.jpeg'
 import TuberMan from './assets/tuberman.jpeg'
+import GoBackArrow from './assets/gobackarrow.png'
 
 import GoogleAppStore from './assets/googleplaystore.jpeg'
 import MainLogoTuber from './assets/mainLogo.jpeg'
 import { OTPcheck } from './OTPcheck'
+import DoINeedToDropOff from './DoINeedToDropOff'
  
  
 function App() {
@@ -61,18 +63,21 @@ function App() {
 ]);
 
 
-
+const [showDiv, setShowDiv] = useState(false);
 
 const handleNextClick1  = () => {
 
   sessionStorage.setItem("step1Data", JSON.stringify(step1Data));
   // Call the next function to advance to the next step
-  next();
+  // GettingReturningValueToShowOTPpage(); 
+  setShowDiv(true);
+  // next();
 };
 const handleNextClick2  = () => {
 
   sessionStorage.setItem("step2Data", JSON.stringify(step2Data));
   // Call the next function to advance to the next step
+  setShowDiv(false);
   next();
 };
 
@@ -134,6 +139,13 @@ const [isOpen, setIsOpen] = useState(false);
     setIsOpen2(!isOpen2);
   };
 
+  const [isOpen3, setIsOpen3] = useState(false);
+
+  const DropOffQuestionClick = () => {
+    setIsOpen3(!isOpen3);
+  };
+
+
  
   return  (
     <div className="page-container">
@@ -149,9 +161,33 @@ const [isOpen, setIsOpen] = useState(false);
     <span className="spantags">
       <span className="orange-text">TUBER</span> driver
     </span>
+    {showDiv && (<>
+          
+          <div className="OTPheadingHolderInIndex2">
+            <span className='MainheadingInRequirments'>Want to be your own boss?</span>
+            <span className='MainheadingInRequirments'>Apply to become a tuber driver and start earning extra income</span>
+          </div>
 
-    <div className="infoholder">
-      {currentStepIndex === 0 ? (
+          <div className="spanTagsHolder">
+            <span className='textWithImageIcons'> <img src={CorrectIcon} alt="correct icon"  className='corerctIcon'/>   Earn on your terms</span>
+            <span className='textWithImageIcons'> <img src={CorrectIcon} alt="correct icon"  className='corerctIcon'/>  Set your own schedule</span>
+            <span className='textWithImageIcons'> <img src={CorrectIcon} alt="correct icon"  className='corerctIcon'/>  Get paid weekly</span>
+          </div>
+
+          <h1 className="diliverDriverText">Drive.Deliver.Earn.</h1>
+
+          <div className="GooglePalyStoreDivHolder">
+            <span>Get TUBER driver app now</span>
+            <div>
+              <img src={GoogleAppStore} alt=""   />
+              <img src={AppleStore} alt=""  />
+            </div>
+          </div>
+          </>)}
+
+    {!showDiv && (<>
+      <div className="infoholder">
+      {currentStepIndex === 0 ?  (
         <>
           <span className='requiremntsspan'>Requirments</span>
           <span className='normelText'>Age 18+</span>
@@ -161,9 +197,19 @@ const [isOpen, setIsOpen] = useState(false);
           <span className='normelText'>Smartphone with IOS 12 /Android 6.0</span>
           <span className='normelText'>Right to work in Austraila</span>
           <span className='normelText'>It's your responsibility to keep your documents up to date if they expire</span>
-
-          <WhatAreTheQuestions isOpen={isOpen} handleQuestionClick={handleQuestionClick} />
-          <OftenToGetPaid isOpen2={isOpen2} handleOfftenQuestionClick={handleOfftenQuestionClick} />
+            
+            <h2>FAQs</h2>
+             <div className="FAQsholder">
+            <WhatAreTheQuestions isOpen={isOpen} handleQuestionClick={handleQuestionClick} />
+            <OftenToGetPaid isOpen2={isOpen2} handleOfftenQuestionClick={handleOfftenQuestionClick} />
+            <DoINeedToDropOff isOpen3={isOpen3} DropOffQuestionClick={DropOffQuestionClick} />
+            <OftenToGetPaid isOpen2={isOpen2} handleOfftenQuestionClick={handleOfftenQuestionClick} />
+            <OftenToGetPaid isOpen2={isOpen2} handleOfftenQuestionClick={handleOfftenQuestionClick} />
+            <OftenToGetPaid isOpen2={isOpen2} handleOfftenQuestionClick={handleOfftenQuestionClick} />
+            <OftenToGetPaid isOpen2={isOpen2} handleOfftenQuestionClick={handleOfftenQuestionClick} />
+            
+             </div>
+          
         </>
       ) : (
         <>
@@ -190,6 +236,7 @@ const [isOpen, setIsOpen] = useState(false);
         </>
       )}
     </div>
+    </>)}
   </div>
 ):(
   <> 
@@ -206,6 +253,8 @@ const [isOpen, setIsOpen] = useState(false);
         {currentStepIndex !== 5 ? (
     <div className="formWrapper">
       <form action="" className="formholder">
+
+ 
         <div className="stepsindicaterholder">
           <span>
             Step {currentStepIndex + 1}/{steps.length -1}
@@ -221,9 +270,49 @@ const [isOpen, setIsOpen] = useState(false);
             ></span>
           ))}
         </div>
+         
+        {showDiv && (<>
 
-        {step}
-        <div className="buttonholder">
+          <div className="titileholder">
+            <span className="createaccounttitle">Verify your phone </span>
+        </div>
+
+<div className="OTPtextHolder">
+<span className="otptext">
+            Enter the 4-digit verification code sent to
+        </span>
+        <span className="otpPhoneNumber">
+            +97 100254 8799
+        </span>
+
+</div>
+        
+
+        <div className="OTPnumberHolder">
+            <input type="number"  className="OTPnumberFields" placeholder="_" maxLength={1} />
+            <input type="number"  className="OTPnumberFields" placeholder="_" maxLength={1}/>
+            <input type="number"  className="OTPnumberFields" placeholder="_" maxLength={1}/>
+            <input type="number"  className="OTPnumberFields" placeholder="_" maxLength={1}/>
+        </div>
+
+        <div className="resentTextHolder">
+        <span className="resendText">Resend code in 0:14</span>
+
+        </div>
+           <button className='OTPConfirmBtn' type='button' onClick={handleNextClick2}>Confirm</button>
+        
+        </>)
+        
+        
+        
+        }
+
+  {!showDiv && (<>{step}</>)}
+
+         
+         {!showDiv && (<>
+         
+          <div className="buttonholder">
           {!isFirstStep && (
             <button type="button" onClick={back} className="backbtn">
               Back
@@ -234,11 +323,17 @@ const [isOpen, setIsOpen] = useState(false);
             {buttonText}
           </button>
         </div>
+
+         </>)}
+        
+        {!showDiv && (<>
         {currentStepIndex === 0 && (
           <p className="alreadyHaveAccount">
             Already have an account ?<a href="#" className="signLink">Sign in</a>
           </p>
         )}
+        </>)}
+        
       </form>
     </div>
   ) : (
@@ -271,7 +366,7 @@ const [isOpen, setIsOpen] = useState(false);
 
                 <div className="buttonholder">
           {!isFirstStep && (
-            <button type="button" onClick={back} className="nextbtn">
+            <button type="button" onClick={back} className="nextbtn">  
              Back to web site
             </button>
           )}

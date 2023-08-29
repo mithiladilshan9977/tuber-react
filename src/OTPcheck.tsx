@@ -26,9 +26,11 @@ export function OTPcheck(){
         </div>
 
         <div className="resentTextHolder">
-        <span className="resendText">Resend code in 0:14</span>
-
+        <span className="resendText">Resend codde in 0:14</span>
+  
         </div>
+
+    
 
 
 
