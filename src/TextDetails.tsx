@@ -12,7 +12,9 @@ export function TextDetails({ formData, setFormData }){
     return(
         <>
 
-     
+    <div className="titileholder">
+        <span className="createaccounttitle">Tax details</span>
+        </div>
 
 
 
@@ -50,10 +52,10 @@ export function TextDetails({ formData, setFormData }){
         className="inputfields"
     >
         <option value="">GST retistration status</option>
-        <option value="type2">type2</option>
-        <option value="India">India</option>
-        <option value="Sri lanka">Sri lanka</option>
-        <option value="Sri lanka">Sri lanka</option>
+        <option value="">type2</option>
+        <option value="">India</option>
+        <option value="">Sri lanka</option>
+        <option value="">Sri lanka</option>
     </select>
 
 
@@ -99,10 +101,10 @@ export function TextDetails({ formData, setFormData }){
         >
 
             <option value="">State</option>
-            <option value="type2">type2</option>
-            <option value="India">India</option>
-            <option value="Sri lanka">Sri lanka</option>
-            <option value="Sri lanka">Sri lanka</option>
+            <option value="">type2</option>
+            <option value="">India</option>
+            <option value="">Sri lanka</option>
+            <option value="">Sri lanka</option>
         </select>
 
 
@@ -113,10 +115,10 @@ export function TextDetails({ formData, setFormData }){
             className="inputfields">
 
             <option value="">Country</option>
-                <option value="type2">type2</option>
-                <option value="India">India</option>
-                <option value="Sri lanka">Sri lanka</option>
-                <option value="Sri lanka">Sri lanka</option>
+                <option value="">type2</option>
+                <option value="">India</option>
+                <option value="">Sri lanka</option>
+                <option value="">Sri lanka</option>
         </select>
 
    </div>

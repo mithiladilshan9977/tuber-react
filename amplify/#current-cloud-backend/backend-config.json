@@ -1,0 +1,45 @@
+{
+  "auth": {
+    "tuber3fe6baa1": {
+      "customAuth": false,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "serviceType": "imported"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_auth_tuber3fe6baa1_nativeClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "tuber3fe6baa1"
+        }
+      ]
+    },
+    "AMPLIFY_auth_tuber3fe6baa1_userPoolId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "tuber3fe6baa1"
+        }
+      ]
+    },
+    "AMPLIFY_auth_tuber3fe6baa1_userPoolName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "tuber3fe6baa1"
+        }
+      ]
+    },
+    "AMPLIFY_auth_tuber3fe6baa1_webClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "tuber3fe6baa1"
+        }
+      ]
+    }
+  }
+}

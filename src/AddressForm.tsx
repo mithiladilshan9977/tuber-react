@@ -13,7 +13,9 @@ export function AddressForm({ formData, setFormData }){
     return (
         < >
  
-        
+        <div className="titileholder">
+            <span className="createaccounttitle">Driver information</span>
+        </div>
 
         <input
             autoFocus
@@ -69,9 +71,8 @@ export function AddressForm({ formData, setFormData }){
             type="password" 
             placeholder="Confirm password" 
             className="inputfields" 
-            name="ConfirmPassword"
-            onChange={handleInputChange}
-            value={formData.ConfirmPassword}
+            name="password"
+            value={formData.ConfirmPassword} 
         />
 
 

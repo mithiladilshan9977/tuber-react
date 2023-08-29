@@ -1,0 +1,25 @@
+{
+  "authSelections": "userPoolOnly",
+  "resourceName": "tuber3fe6baa1",
+  "serviceType": "imported",
+  "region": "ap-southeast-2",
+  "usernameAttributes": [
+    "email",
+    "phone_number"
+  ],
+  "requiredAttributes": [
+    "phone_number"
+  ],
+  "passwordPolicyMinLength": 8,
+  "passwordPolicyCharacters": [
+    "Requires Lowercase",
+    "Requires Uppercase",
+    "Requires Numbers",
+    "Requires Symbols"
+  ],
+  "mfaConfiguration": "OFF",
+  "autoVerifiedAttributes": [
+    "phone_number"
+  ],
+  "mfaTypes": []
+}

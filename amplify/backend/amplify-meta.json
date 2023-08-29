@@ -1,0 +1,54 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-tuber-tuber-125721-authRole",
+      "UnauthRoleArn": "arn:aws:iam::178466833699:role/amplify-tuber-tuber-125721-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::178466833699:role/amplify-tuber-tuber-125721-authRole",
+      "Region": "ap-southeast-2",
+      "DeploymentBucketName": "amplify-tuber-tuber-125721-deployment",
+      "UnauthRoleName": "amplify-tuber-tuber-125721-unauthRole",
+      "StackName": "amplify-tuber-tuber-125721",
+      "StackId": "arn:aws:cloudformation:ap-southeast-2:178466833699:stack/amplify-tuber-tuber-125721/2de43b40-3b3d-11ee-a360-0adc22e89278",
+      "AmplifyAppId": "d2134jq08ftwan"
+    }
+  },
+  "auth": {
+    "tuber3fe6baa1": {
+      "service": "Cognito",
+      "serviceType": "imported",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "output": {
+        "UserPoolId": "ap-southeast-2_xejvDoMuZ",
+        "UserPoolName": "tuber-v3-driver-app",
+        "AppClientID": "5apcaahg4mlb2gb99iqdeobkn3",
+        "AppClientIDWeb": "5apcaahg4mlb2gb99iqdeobkn3"
+      },
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [
+          "PHONE_NUMBER"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": [
+            "REQUIRES_LOWERCASE",
+            "REQUIRES_UPPERCASE",
+            "REQUIRES_NUMBERS",
+            "REQUIRES_SYMBOLS"
+          ]
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [],
+        "verificationMechanisms": [
+          "PHONE_NUMBER"
+        ]
+      },
+      "lastPushTimeStamp": "2023-08-29T07:50:24.751Z"
+    }
+  }
+}

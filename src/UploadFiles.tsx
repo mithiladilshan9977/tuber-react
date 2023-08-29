@@ -54,7 +54,10 @@ export function UploadFiles(){
 
       <div className="mainWrapper">
 
-        
+        <div className="titileholder">
+          <span className="createaccounttitle">Upload required documents</span>
+        </div>
+
 
 
       <div className="mainOutHolders">

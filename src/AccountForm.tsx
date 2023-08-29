@@ -12,7 +12,9 @@
     return (
        
     <>
-      
+      <div className="titileholder">
+        <span className="createaccounttitle">Vehicle information</span>
+        </div>
         
           <select 
             name="vehicleType"
@@ -22,9 +24,9 @@
 
             <option value="">Select your vehicle type</option>
             <option value="Toyota">Toyota</option>
-            <option value="Lambo">Lambo</option>
-            <option value="Lambo lanka">Lambo lanka</option>
-            <option value="Sri Lambo">Sri Lambo</option>
+            <option value="">Lambo</option>
+            <option value="">Lambo lanka</option>
+            <option value="">Sri Lambo</option>
          </select>
 
 
@@ -36,10 +38,10 @@
           className="inputfields">
 
             <option value="">Vehical make</option>
-            <option value="type2">type2</option>
-            <option value="India">India</option>
-            <option value="Sri lanka">Sri lanka</option>
-            <option value="Sri lanka">Sri lanka</option>
+            <option value="">type2</option>
+            <option value="">India</option>
+            <option value="">Sri lanka</option>
+            <option value="">Sri lanka</option>
          </select>
 
 
