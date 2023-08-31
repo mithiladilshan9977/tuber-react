@@ -761,3 +761,155 @@ flex-direction: column;
     background-color: #f9f9f9;
   }
 }
+.ErrorMessage{
+  background-color: red;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  padding: 10px 15px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 7px 3px rgba(0, 0, 0, 0.126);
+  margin-top: 7px;
+
+ }
+
+.uploadFilecss.uploaded {
+  color: green;
+  border-color: greenyellow;
+  background-color: rgb(38, 157, 62);
+  color:black;
+}
+
+ @media only screen and (max-width: 600px) {
+  #root {
+    max-width: unset;
+    margin: unset;
+    padding: unset;
+    text-align: unset;
+  }
+
+  .mainholder {
+    display: unset;
+  }
+
+  .inputFailedValidation {
+    border-color: red; /* Change to the desired color */
+  }
+
+  .centered-div, .left-side {
+    width: unset;
+    height: unset;
+    padding: 2vh 3vw;
+  }
+
+  .tuberheadingdiv {
+    justify-content: center;
+  }
+
+  .left-side > .spantags {
+    align-self: center;
+    font-size: 25px;
+    line-height: 30px;
+  }
+
+  .requiremntsspan, .faqTitle {
+    margin-top: 15px;
+    font-size: 17px;
+  }
+
+  .faq-item > p.question {
+    font-size: 13px;
+  }
+
+  .formholder {
+    width: 100%;
+  }
+
+  .alreadyHaveAccount {
+    text-align: center;
+  }
+
+  .section1, .section2 {
+    display: block;
+  }
+
+  .section1 input, .section2 select {
+    width: -webkit-fill-available;
+  }
+
+  .mainOutHolders {
+    display: unset;
+
+  }
+
+  .subDivWrapper > div > div {
+    margin-left: unset;
+    width: unset;
+    gap: 35px;
+    place-content: center;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .subDivWrapper > div {
+    display: block;
+  }
+
+  .fileInputContainer {
+    width: unset;
+    gap: 35px;
+    place-content: center;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+
+  .mainOutHolderssub {
+    margin-bottom: 0;
+  }
+
+  button.backbtn {
+    margin-left: 12px;
+  }
+
+  .final-image-left-side {
+    width: auto;
+    height: auto;
+  }
+
+  .final-image-left-side img {
+    object-fit: contain;
+    height: fit-content;
+  }
+
+  .contentHolderDiv {
+    padding: 10px;
+  }
+
+  button.OTPConfirmBtn {
+    width: auto;
+  }
+
+  .OTPnumberHolder {
+    justify-content: center;
+  }
+
+  .resentTextHolder {
+    justify-content: center;
+  }
+
+  .centered-div > div > div > div.buttonholder > button.nextbtn {
+    margin-left: 0;
+    min-width: fit-content;
+    padding: 14px 25px;
+  }
+
+  .centered-div > div > div > div.buttonholder > button.finalFAQsbtn {
+    margin: 0;
+  }
+
+  .GooglePalyStoreDivHolder div {
+    align-self: center;
+  }
+
+}

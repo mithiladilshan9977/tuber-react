@@ -13,7 +13,6 @@
        
     <>
       <div className="titileholder">
-        <span className="createaccounttitle">Vehicle information</span>
         </div>
         
           <select 
@@ -23,10 +22,9 @@
             className="inputfields">
 
             <option value="">Select your vehicle type</option>
-            <option value="Toyota">Toyota</option>
-            <option value="">Lambo</option>
-            <option value="">Lambo lanka</option>
-            <option value="">Sri Lambo</option>
+            <option value="CAR<">CAR</option>
+            <option value="UTE">UTE</option>
+            <option value="VAN">VAN</option>
          </select>
 
 
@@ -39,7 +37,7 @@
 
             <option value="">Vehical make</option>
             <option value="">type2</option>
-            <option value="">India</option>
+            <option value="India">India</option>
             <option value="">Sri lanka</option>
             <option value="">Sri lanka</option>
          </select>

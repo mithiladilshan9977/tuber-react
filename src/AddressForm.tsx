@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from 'react';
+
 export function AddressForm({ formData, setFormData }){
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement| HTMLSelectElement>) => {
@@ -12,11 +14,26 @@ export function AddressForm({ formData, setFormData }){
 
     return (
         < >
- 
-        <div className="titileholder">
-            <span className="createaccounttitle">Driver information</span>
-        </div>
+    <input
+        autoFocus
+        required
+        type="text"
+        placeholder="First name"
+        className={`inputfields ${formData.firstName ? '' : 'inputFailedValidation'}`}
+        name="firstName"
+        value={formData.firstName}
+        onChange={handleInputChange}
+      />
 
+      <input
+        required
+        type="text"
+        placeholder="Last name"
+        className="inputfields"
+        name="lastName"
+        value={formData.lastName}
+        onChange={handleInputChange}
+      />
         <input
             autoFocus
             required
@@ -51,30 +68,6 @@ export function AddressForm({ formData, setFormData }){
             <option value="India">India</option>
             <option value="India">India</option>
         </select>
-
- 
-         
-         <div className="craeetpasswordholder">
-        <span className="createPasswordText">Create password</span>
-        </div>
-
-         
-         <input 
-            type="password" 
-            placeholder="Password" 
-            className="inputfields" 
-            name="password"
-            value={formData.password}
-            onChange={handleInputChange}/>
-            
-         <input 
-            type="password" 
-            placeholder="Confirm password" 
-            className="inputfields" 
-            name="password"
-            value={formData.ConfirmPassword} 
-        />
-
 
         </>
     )

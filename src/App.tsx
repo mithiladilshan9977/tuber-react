@@ -5,7 +5,7 @@ import { TextDetails } from "./TextDetails";
 import { UserForm } from "./UserForm";
 import { UploadFiles } from "./UploadFiles";
 import { useMultistepForm } from "./useMultistepForm";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import WhatAreTheQuestions from "./WhatAreTheQuestions";
 import OftenToGetPaid from "./OftenToGetPaid";
 import CorrectIcon from "./assets/correct_58wovqb649og_512.png";
@@ -22,23 +22,25 @@ import SpecialInsuarance from "./SpecialInsuarace";
 import DriveOldCar from "./DriveOldCar";
 import JobsCanIGet from "./JobsCanIget";
 import MapApplication from "./MapApplication";
-import { signUp, confirmSignUp } from "./aws";
+import { signUp, confirmSignUp, resendConfirmationCode } from "./aws";
+
 
 function App() {
   const [step1Data, setStep1Data] = useState({
-    firstName: "",
-    lastName: "",
+    
     email: "",
     phoneNumber: "",
+    password: "",
+    confirmPassword: "",
     termsAndConditions: false,
   });
 
   const [step2Data, setStep2Data] = useState({
+    firstName: "",
+    lastName: "",
     dateOfBirth: "",
     driverLicenseNo: "",
     city: "",
-    password: "",
-    ConfirmPassword: "",
   });
 
   const [step3Data, setStep3Data] = useState({
@@ -59,6 +61,20 @@ function App() {
     state: "",
     country: "",
   });
+
+ 
+  const [otpDigits, setOtpDigits] = useState(['', '', '', '', '', '']);
+
+  const handleOtpDigitChange = (index, value) => {
+    if (value === '' || /^[0-9]$/.test(value)) {
+      const updatedOtpDigits = [...otpDigits];
+      updatedOtpDigits[index] = value;
+      setOtpDigits(updatedOtpDigits);
+    }
+  };
+  
+
+  const combinedOtp = otpDigits.join('');
 
   const {
     steps,
@@ -81,16 +97,58 @@ function App() {
   const [showDiv, setShowDiv] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [countdown, setCountdown] = useState(15);
+  const [isResendActive, setIsResendActive] = useState(false)
+  const phoneNumberPattern = /^\d{10}$/;
+
+  useEffect(() => {
+    let timer: string | number | NodeJS.Timeout | undefined;
+
+    if (countdown > 0) {
+      timer = setTimeout(() => {
+        setCountdown(prevCountdown => prevCountdown - 1);
+      }, 1000);
+    } else {
+      setIsResendActive(true);
+    }
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [countdown]);
+
+  const handleBackClick= async () => {
+    setShowErrorMessage(false);
+    back();
+  }
+  
 
   const handleNextClick1 = async () => {
-    if (!step1Data.firstName) {
-      setErrorMessage("Please enter your first name");
-      setShowErrorMessage(true);
-    } else if (!step1Data.lastName) {
-      setErrorMessage("Please enter your last name");
-      setShowErrorMessage(true);
-    } else if (!step1Data.email) {
+
+    sessionStorage.setItem("step1Data", JSON.stringify(step1Data));
+    if (!step1Data.email) {
       setErrorMessage("Please enter your E-mail address");
+      setShowErrorMessage(true);
+    }  else if (!step1Data.phoneNumber) {
+      setErrorMessage("Please enter a Phone Number");
+      setShowErrorMessage(true);
+    // }  else if (!phoneNumberPattern.test(step1Data.phoneNumber)) {
+    //   setErrorMessage("Please enter a Valid Phone Number");
+    //   setShowErrorMessage(true);
+    }  else if (!step1Data.password) {
+      setErrorMessage("Please enter a password");
+      setShowErrorMessage(true);
+    } else if (!isStrongPassword(step1Data.password)) {
+      setErrorMessage("Password must be strong (min. 8 characters, uppercase, lowercase, digit, special character)");
+      setShowErrorMessage(true);
+    } else if (!step1Data.confirmPassword) {
+      setErrorMessage("Please re-enter your password");
+      setShowErrorMessage(true);
+    } else if (step1Data.password != step1Data.confirmPassword) {
+      setErrorMessage("Passwords not matching");
+      setShowErrorMessage(true);
+    } else if (step1Data.termsAndConditions == false) {
+      setErrorMessage("You must agree to Our Terms for continue further");
       setShowErrorMessage(true);
     } else {
       try {
@@ -98,21 +156,29 @@ function App() {
           username: step1Data.email,
           password: "Pass@123",
           email: step1Data.email,
-          phone_number: "+94777777777",
+          phone_number: "+" + step1Data.phoneNumber,
         });
         console.log(userSub);
         setErrorMessage("");
         setShowErrorMessage(false);
-        sessionStorage.setItem("step1Data", JSON.stringify(step1Data));
         setShowDiv(true);
       } catch (error) {
         console.log("Error during registration:", error);
+        setErrorMessage("" + error as string);
+        setShowErrorMessage(true);
       }
     }
   };
 
   const handleNextClick2 = () => {
-    if (!step2Data.dateOfBirth) {
+
+    if (!step2Data.firstName) {
+      setErrorMessage("Please enter your First name");
+      setShowErrorMessage(true);
+    } else if (!step2Data.lastName) {
+      setErrorMessage("Please enter your Last name");
+      setShowErrorMessage(true);
+    } else if (!step2Data.dateOfBirth) {
       setErrorMessage("Please enter your birth date");
       setShowErrorMessage(true);
     } else if (!step2Data.driverLicenseNo) {
@@ -120,15 +186,6 @@ function App() {
       setShowErrorMessage(true);
     } else if (!step2Data.city) {
       setErrorMessage("Please select your city driver in");
-      setShowErrorMessage(true);
-    } else if (!step2Data.password) {
-      setErrorMessage("Please enter a password");
-      setShowErrorMessage(true);
-    } else if (!step2Data.ConfirmPassword) {
-      setErrorMessage("Please re-enter your password");
-      setShowErrorMessage(true);
-    } else if (step2Data.password != step2Data.ConfirmPassword) {
-      setErrorMessage("Passwords not matching");
       setShowErrorMessage(true);
     } else {
       setErrorMessage("");
@@ -138,17 +195,34 @@ function App() {
       next();
     }
   };
+  
 
   const GoNextAfterOTPConfirmation = async () => {
     try {
       await confirmSignUp({
         username: step1Data.email,
-        code: "123456",
+        code: combinedOtp,
       });
       setShowDiv(false);
       next();
     } catch (error) {
       console.log("Error during registration:", error);
+      setErrorMessage("" + error as string);
+      setShowErrorMessage(true);
+    }
+  };
+
+  const ResendOTPConfirmation = async () => {
+    try {
+      setIsResendActive(false);
+      setCountdown(15);
+      await resendConfirmationCode({
+        username: step1Data.email,
+      });
+    } catch (error) {
+      console.log("Error during resend code:", error);
+      setErrorMessage("" + error as string);
+      setShowErrorMessage(true);
     }
   };
 
@@ -219,9 +293,9 @@ function App() {
   let setHeadingText;
 
   if (currentStepIndex === 0) {
-    console.log(currentStepIndex + "  0000000");
     buttonText = "Become a tuber driver";
     handleNextClick = handleNextClick1;
+    
   } else if (currentStepIndex === 1) {
     buttonText = "Confirm";
     handleNextClick = handleNextClick2;
@@ -232,7 +306,7 @@ function App() {
     buttonText = "Confirm";
     handleNextClick = handleNextClick4;
   } else if (currentStepIndex === 4) {
-    buttonText = "Confirm";
+    buttonText = "Submit";
     handleNextClick = handleNextClick5;
   } else {
     buttonText = isLastStep ? "Submit" : `Step ${currentStepIndex + 1}`;
@@ -241,7 +315,7 @@ function App() {
   // setting heading text
 
   if (currentStepIndex === 0) {
-    setHeadingText = "Create your tuber account";
+
   } else if (currentStepIndex === 1) {
     setHeadingText = "Driver information";
   } else if (currentStepIndex === 2) {
@@ -306,6 +380,7 @@ function App() {
   const MapApplicationQuestionClick = () => {
     setIsOpen9(!isOpen9);
   };
+
 
   return (
     <div className="page-container">
@@ -549,41 +624,35 @@ function App() {
 
                     <div className="OTPtextHolder">
                       <span className="otptext">
-                        Enter the 4-digit verification code sent to
+                        Enter the 6-digit verification code sent to
                       </span>
-                      <span className="otpPhoneNumber">+97 100254 8799</span>
+                      <span className="otpPhoneNumber">+{step1Data.phoneNumber}</span>
                     </div>
 
                     <div className="OTPnumberHolder">
-                      <input
-                        type="number"
-                        className="OTPnumberFields"
-                        placeholder="_"
-                        maxLength={1}
-                      />
-                      <input
-                        type="number"
-                        className="OTPnumberFields"
-                        placeholder="_"
-                        maxLength={1}
-                      />
-                      <input
-                        type="number"
-                        className="OTPnumberFields"
-                        placeholder="_"
-                        maxLength={1}
-                      />
-                      <input
-                        type="number"
-                        className="OTPnumberFields"
-                        placeholder="_"
-                        maxLength={1}
-                      />
+                    {otpDigits.map((digit, index) => (
+                        <input
+                            key={index}
+                            type="number"
+                            className="OTPnumberFields"
+                            placeholder="_"
+                            maxLength={1}
+                            value={digit}
+                            onChange={(e) => handleOtpDigitChange(index, e.target.value)}
+                          />
+                        ))}
                     </div>
 
                     <div className="resentTextHolder">
-                      <span className="resendText">Resend code in 0:14</span>
+                     {isResendActive ? (
+                        <a className="resendText" onClick={ResendOTPConfirmation}>
+                          Resend Code
+                        </a>
+                        ) : (
+                        `Resend code in 0:${countdown < 10 ? `0${countdown}` : countdown}`
+                    )}
                     </div>
+
                     <button
                       className="OTPConfirmBtn"
                       type="button"
@@ -602,7 +671,7 @@ function App() {
                       {!isFirstStep && (
                         <button
                           type="button"
-                          onClick={back}
+                          onClick={handleBackClick}
                           className="backbtn"
                         >
                           Back
@@ -667,7 +736,7 @@ function App() {
 
                   <div className="buttonholder">
                     {!isFirstStep && (
-                      <button type="button" onClick={back} className="nextbtn">
+                      <button type="button" onClick={handleBackClick} className="nextbtn">
                         Back to web site
                       </button>
                     )}
@@ -692,8 +761,23 @@ function App() {
 
 export default App;
 
-function setTheErrorMessage(arg0: string) {
-  throw new Error("Function not implemented.");
+function isStrongPassword(password: string) {
+  {
+    // Define your password strength criteria
+    const minLength = 8;
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasDigit = /\d/.test(password);
+    const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(password);
+  
+    return (
+      password.length >= minLength &&
+      hasUpperCase &&
+      hasLowerCase &&
+      hasDigit &&
+      hasSpecialChar
+    );
+  };
 }
 // import { AccountForm } from './AccountForm'
 // import { AddressForm } from './AddressForm'

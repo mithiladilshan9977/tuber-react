@@ -1,6 +1,13 @@
+import { useEffect, useState } from "react";
 
 
 export function OTPcheck(){
+
+
+
+
+const step1data = sessionStorage.getItem('step1Data');
+
     return (
         <>
      <div className="titileholder">
@@ -9,10 +16,10 @@ export function OTPcheck(){
 
 <div className="OTPtextHolder">
 <span className="otptext">
-            Enter the 4-digit verification code sent to
+            Enter the 6-digit verification code sent to
         </span>
         <span className="otpPhoneNumber">
-            +97 100254 8799
+            step1data.phoneNumber
         </span>
 
 </div>
@@ -23,10 +30,12 @@ export function OTPcheck(){
             <input type="number"  className="OTPnumberFields" placeholder="_" maxLength={1}/>
             <input type="number"  className="OTPnumberFields" placeholder="_" maxLength={1}/>
             <input type="number"  className="OTPnumberFields" placeholder="_" maxLength={1}/>
+            <input type="number"  className="OTPnumberFields" placeholder="_" maxLength={1}/>
+            <input type="number"  className="OTPnumberFields" placeholder="_" maxLength={1}/>
         </div>
 
         <div className="resentTextHolder">
-        <span className="resendText">Resend codde in 0:14</span>
+        {/* <span className="resendText">Resend codde in 0:14</span> */}
   
         </div>
 
